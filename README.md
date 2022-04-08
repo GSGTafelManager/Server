@@ -52,3 +52,5 @@ The /online request results in something like that:
         }  
     ]  
 }  
+# CLIENT
+In your server, you can create a subfoler "/files", where you can save client files for making them availible at IP/file/FILE
