@@ -21,17 +21,18 @@
 * Press "Reload *.pythjonanywhere.com"
 
 # Keys Settings
-In the file "rights.json" of your server, you can set different keys. 
-Like this: 
-{ 
-    "users": [ 
-        { 
-            "key": "ROOT1234", 
-            "prefixes": [""] // THIS ALLOWS ACCESS TO ALL DEVICES 
-        }, 
-        { 
-            "key": "FRIEND5678", 
-            "prefixes": ["setup", "friend"] // THIS ALLOWS ACCESS TO DEVICES WHICH ID ARE STARTING WITH "friend" AND "setup" (new devices ids are starting with setup by default) 
-        } 
-    ] 
-} 
+In the file "rights.json" of your server, you can set different keys.  
+Like this:  
+{  
+    "users": [  
+        {  
+            "key": "ROOT1234",  
+            "prefixes": [""] // THIS ALLOWS ACCESS TO ALL DEVICES  
+        },  
+        {  
+            "key": "FRIEND5678",  
+            "prefixes": ["setup", "friend"] // THIS ALLOWS ACCESS TO DEVICES WHICH ID ARE STARTING WITH "friend" AND "setup" (new devices ids are starting with setup by default)  
+        }  
+    ]  
+}  
+  
