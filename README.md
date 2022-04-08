@@ -36,3 +36,19 @@ Like this:
     ]  
 }  
   
+# UNINSTALL
+If you want to uninstall the program from any connected devices, just change the first line of server.py from "UNINSTALL = False" to "UNINSTALL = True"
+
+# API
+A client has to make a POST request to /q/<id> with a list of the timestamps from the previous executed comannds in the json-key "executed"  
+To send a command, you have to make a POST request to /send/<id> with the json-data supposed to be send to the client. Usually formatted like this: {"exec": "YOUR COMMAND", ...OTHER_INFORMATIONS} The server will add a "timestamp" to the json to send it back on the next request  
+A GUI-Application can request GET /online to get a list of all online devices and their last connection and GET /online/<id> to recive "True" or "False", rather if the device is online or not.  
+The /online request results in something like that:  
+{  
+    "online": [  
+        {  
+          "id": "DEVICE_ID",
+          "last": 12345.6789
+        }  
+    ]  
+}  
