@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "prefixes": [""], // THIS WILL ALLOW ALL DEVICES
+            "key": "ROOT1234"
+        },
+        {
+            "prefixes": ["setup", "friend"], // THIS WILL ALLOW DEVICES WITH IDS: setup* and friend*
+            "key": "FRIEND5678"
+        }
+    ]
+}
