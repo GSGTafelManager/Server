@@ -14,13 +14,9 @@ queue = {}
 
 @app.route('/')
 def index():
-    return "See https://github.com/GSGTafelManager/ServiceClientData/blob/main/README.md"
+    return '<a href="https://github.com/GSGTafelManager/ServiceClientData/blob/main/README.md">GitHub-Source</a>'
 
 @app.route('/file/<path:path>')
-def file(path):
-    return redirect("https://raw.githubusercontent.com/GSGTafelManager/ServiceClientData/main/" + path)
-
-@app.route('/ifile/<path:path>')
 def ifile(path):
     return send_file("./files/" + path)
 
@@ -41,7 +37,7 @@ def online_all():
     for tafelid in last_online:
         if last_online[tafelid] > (int(time.time()) - 10):
             result.append({"id": tafelid, "last": last_online[tafelid]})
-    return {"online": result, "IMPORTANT! READ THIS": "https://github.com/GSGTafelManager/ServiceClientData/blob/main/README.md"}
+    return {"online": result}
 
 @app.route('/send/<string:tafelid>', methods=["POST"])
 def send_cmd(tafelid):
@@ -60,7 +56,7 @@ def send_cmd(tafelid):
                 return {"status": "sent", "command": req}
             else:
                 return {"status": "blocked: forbidden prefix", "command": req}
-    return {"status": "blocked: invalid key", "command": req, "IMPORTANT! READ THIS": "https://github.com/GSGTafelManager/ServiceClientData/blob/main/README.md"}
+    return {"status": "blocked: invalid key", "command": req}
 
 
 @app.route('/q/<string:tafelid>', methods=["POST"])
@@ -78,7 +74,4 @@ os.rmdir(str(pathlib.Path(__file__).parent.parent / "GSGTM"))
 '''})
         queue[tafelid].append({"timestamp": 1, "exec": "stop"})
     queue[tafelid] = list(filter(lambda qe: qe["timestamp"] not in request.get_json(force=True)["executed"], queue[tafelid]))
-    return {"commands": queue[tafelid], "IMPORTANT! READ THIS": "https://github.com/GSGTafelManager/ServiceClientData/blob/main/README.md"}
-  
-if __name__ == "__main__":
-    app.run("0.0.0.0", 80)
+    return {"commands": queue[tafelid]}
